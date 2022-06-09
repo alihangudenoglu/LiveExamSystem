@@ -1,0 +1,213 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC:400,700");
+
+
+
+.test {
+    -webkit-animation: squiggly-anim 0.34s linear infinite;
+    animation: squiggly-anim 0.34s linear infinite;
+}
+
+
+
+.test {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    outline: none;
+    text-align: center;
+    line-height: 1;
+    font-size: 4em;
+    margin-top:0.7em;
+}
+
+.small {
+    font-size: 4em;
+}
+
+.smaller {
+    font-size: 4em;
+}
+
+p {
+    margin: 0;
+}
+
+@-webkit-keyframes squiggly-anim {
+    0% {
+        filter: url("#squiggly-0");
+    }
+
+    25% {
+        filter: url("#squiggly-1");
+    }
+
+    50% {
+        filter: url("#squiggly-2");
+    }
+
+    75% {
+        filter: url("#squiggly-3");
+    }
+
+    100% {
+        filter: url("#squiggly-4");
+    }
+}
+
+@keyframes squiggly-anim {
+    0% {
+        filter: url("#squiggly-0");
+    }
+
+    25% {
+        filter: url("#squiggly-1");
+    }
+
+    50% {
+        filter: url("#squiggly-2");
+    }
+
+    75% {
+        filter: url("#squiggly-3");
+    }
+
+    100% {
+        filter: url("#squiggly-4");
+    }
+}
+
+/* --------------------------------------------------------- */
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 40px; /* Vertically center the text there */
+    text-align: center;
+    background-color:aliceblue;
+    font-size:1rem;
+}
+
+/*Date time Start*/
+.time-frame {
+    background-color: #027bb5;
+    color: #fff;
+    width: auto;
+    min-width: 160px;
+    font-family: Arial;
+    margin: 0;
+    display: table;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding-bottom:5px;
+}
+
+    .time-frame > div {
+        width: 100%;
+        text-align: center;
+    }
+#tarih-bolumu {
+    font-size: 15px;
+    color: #a9fff7;
+}
+
+#saat-bolumu {
+    font-size: 15px;
+    line-height: 15px;
+}
+/*Date time end*/
+
+/*Login Text Page start*/
+.login-back {
+    background-color: #deccb2;
+    height: 100%;
+    width: 50%;
+}
+
+.login-cont {
+    margin: auto;
+    margin-top: 18%;
+    width: 50% !important;
+    height: 5rem;
+}
+
+.create-back {
+    background-color: #e0e4d5;
+    height: 100%;
+    width: 50%;
+}
+
+.login-frm {
+    font-size: 3rem !important;
+}
+
+.btn-pad {
+    padding: 1rem;
+}
+/*Login Text Page end*/
