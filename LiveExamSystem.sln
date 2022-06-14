@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI", "WebUI\WebUI.csproj", "{48BBDBE2-9FAF-41AB-81E2-05BF0EFDD85D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{64B25083-D317-4AD1-A557-F0583B85748E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{64B25083-D317-4AD1-A557-F0583B85748E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{318E2601-9028-4F4D-98FA-E8337B88C08F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{64B25083-D317-4AD1-A557-F0583B85748E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64B25083-D317-4AD1-A557-F0583B85748E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64B25083-D317-4AD1-A557-F0583B85748E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{318E2601-9028-4F4D-98FA-E8337B88C08F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{318E2601-9028-4F4D-98FA-E8337B88C08F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{318E2601-9028-4F4D-98FA-E8337B88C08F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{318E2601-9028-4F4D-98FA-E8337B88C08F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

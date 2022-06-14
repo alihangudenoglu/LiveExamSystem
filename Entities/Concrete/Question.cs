@@ -12,5 +12,8 @@ namespace Entities.Concrete
         public Answer Options { get; set; }
         public string CorrectAnswer { get; set; }
         public string ImageUrl { get; set; }
+
+        public QuestionImage QuestionImage { get; set; }
+        public Exam Exam { get; set; }
     }
 }
