@@ -50,6 +50,7 @@ namespace Business.Concrete
             
 
         }
+        
 
         public IDataResult<Exam> GetAll(string kod)
         {

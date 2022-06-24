@@ -22,90 +22,93 @@
           crossorigin="anonymous" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 pl-4">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            @for (int i = 1; i <= Model.Questions.Count;i++)
-                            {
-                                <button type="button" onclick="myButton('Soru_@i')" class="btn btn-primary mr-1 mt-2">@i</button>
-                            }
-                        </li>
-                        <li class="nav-item">
-                            <button type="button" class="btn btn-danger mr-1 mt-2">Sınavı Bitir</button>
-                        </li>
-                    </ul>
+    <form method="post">
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 pl-4">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                @for (int i = 1; i <= Model.Questions.Count; i++)
+                                {
+                                    <button type="button" onclick="myButton('Soru_@i')" class="btn btn-primary mr-1 mt-2">@i</button>
+                                }
+                            </li>
+                            <li class="nav-item">
+                                <button type="submit" name="Kod" value="@ViewBag.kod" @*onclick="finishAlert()"*@ class="btn btn-danger mr-1 mt-2">Sınavı Bitir</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class='time-frame float-right mt-2'>
+                        <div id='tarih-bolumu'></div>
+                        <div id='saat-bolumu'></div>
+                    </div>
                 </div>
-                <div class='time-frame float-right mt-2'>
-                    <div id='tarih-bolumu'></div>
-                    <div id='saat-bolumu'></div>
-                </div>
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </header>
 
-    <div class="container" id="con">
 
-        @for (int i = 0; i < Model.Questions.Count; i++)
-        {
-        <div class="card rounded mx-auto d-block mb-2" id="Soru_@(i+1)" style="width: auto;">
-            @if (Model.Questions[i].Image.ImagePath != null)
+
+        <div class="container" id="con">
+
+            @for (int i = 0; i < Model.Questions.Count; i++)
             {
-                <img src="@Model.Questions[i].Image.ImagePath" class="card-img-top img-fluid m-auto d-block " alt="soru resmi" style="max-width: auto; max-height:25rem;">
+                <div class="card rounded mx-auto d-block mb-2" id="Soru_@(i+1)" style="width: auto;">
+                    @if (Model.Questions[i].Image.ImagePath != null)
+                    {
+                        <img src="@Model.Questions[i].Image.ImagePath" class="card-img-top img-fluid m-auto d-block " alt="soru resmi" style="max-width: auto; max-height:25rem;">
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">Soru @(i+1):</h5>
+                        <p class="card-text">Soru:@Model.Questions[i].Title</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group input-group-sm mb-3 w-75 m-auto mt-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">A )</span>
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input type="radio" name="results[@i]" value="@Model.Questions[i].Options.OptionOne">
+                                </div>
+                            </div>
+                            <textarea class="form-control" dropzone="1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required disabled>@Model.Questions[i].Options.OptionOne</textarea>
+                        </div>
+                        <div class="input-group input-group-sm mb-3 w-75 m-auto mt-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">A )</span>
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input type="radio" name="results[@i]" value="@Model.Questions[i].Options.OptionTwo">
+                                </div>
+                            </div>
+                            <textarea class="form-control" dropzone="1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required disabled>@Model.Questions[i].Options.OptionTwo</textarea>
+                        </div>
+                        <div class="input-group input-group-sm mb-3 w-75 m-auto mt-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">A )</span>
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input type="radio" name="results[@i]" value="@Model.Questions[i].Options.OptionThree">
+                                </div>
+                            </div>
+                            <textarea class="form-control" dropzone="1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required disabled>@Model.Questions[i].Options.OptionThree</textarea>
+                        </div>
+                        <div class="input-group input-group-sm mb-3 w-75 m-auto mt-3">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">A )</span>
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input type="radio" name="results[@i]" value="@Model.Questions[i].Options.OptionFour" >
+                                </div>
+                            </div>
+                            <textarea class="form-control" dropzone="1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required disabled>@Model.Questions[i].Options.OptionFour</textarea>
+                        </div>
+                    </div>
+                </div>
             }
-            <div class="card-body">
-                <h5 class="card-title">Soru @(i+1):</h5>
-                <p class="card-text">Soru:@Model.Questions[i].Title</p>
-            </div>
-            <div class="card-body">
-                <div class="input-group input-group-sm mb-3 w-75 m-auto mt-3">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">A )</span>
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <input type="radio">
-                        </div>
-                    </div>
-                    <textarea class="form-control" dropzone="1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required disabled>@Model.Questions[i].Options.OptionOne</textarea>
-                </div>
-                <div class="input-group input-group-sm mb-3 w-75 m-auto mt-3">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">A )</span>
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <input type="radio">
-                        </div>
-                    </div>
-                    <textarea class="form-control" dropzone="1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required disabled>@Model.Questions[i].Options.OptionTwo</textarea>
-                </div>
-                <div class="input-group input-group-sm mb-3 w-75 m-auto mt-3">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">A )</span>
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <input type="radio">
-                        </div>
-                    </div>
-                    <textarea class="form-control" dropzone="1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required disabled>@Model.Questions[i].Options.OptionThree</textarea>
-                </div>
-                <div class="input-group input-group-sm mb-3 w-75 m-auto mt-3">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">A )</span>
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <input type="radio">
-                        </div>
-                    </div>
-                    <textarea class="form-control" dropzone="1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required disabled>@Model.Questions[i].Options.OptionFour</textarea>
-                </div>
-            </div>
+
         </div>
-        }
-
-    </div>
-
+    </form>
 
 
 
@@ -127,12 +130,15 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
     <script>
-        
+
         var con = $('#con');
         function myButton(p1) {
             myhid()
             document.getElementById(p1).classList.remove("d-none")
             console.log(p1)
+        }
+        function finishAlert() {
+            window.alert("deneme")
         }
 
         var myhid = function () {
@@ -140,13 +146,13 @@
             for (var i = 1; i < con.children().length; i++) {
                 con.children(i).addClass("d-none");
             }
-            
+
         }
         $(document).ready(function () {
 
             myhid()
-            con.children().first().removeClass("d-none")         
-            
+            con.children().first().removeClass("d-none")
+
 
         });
         function tarihSaat() {

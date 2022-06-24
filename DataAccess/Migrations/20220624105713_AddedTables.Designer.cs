@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220620163817_AddedEntityTables")]
-    partial class AddedEntityTables
+    [Migration("20220624105713_AddedTables")]
+    partial class AddedTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -114,6 +114,27 @@ namespace DataAccess.Migrations
                         .IsUnique();
 
                     b.ToTable("QuestionImages");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.UserResult", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExamKod")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Result")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserResults");
                 });
 
             modelBuilder.Entity("Entities.Concrete.Answer", b =>

@@ -25,6 +25,8 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EfQuestionDal>().As<IQuestionDal>().SingleInstance();
             builder.RegisterType<QuestionImageManager>().As<IQuestionImageService>().SingleInstance();
             builder.RegisterType<EfQuestionImageDal>().As<IQuestionImageDal>().SingleInstance();
+            builder.RegisterType<UserResultManager>().As<IUserResultService>().SingleInstance();
+            builder.RegisterType<EfUserResultDal>().As<IUserResultDal>().SingleInstance();
 
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();

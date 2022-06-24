@@ -17,6 +17,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Question> Questions { get; set; }
         public DbSet<QuestionImage> QuestionImages { get; set; }
         public DbSet<Answer> Answers { get; set; }
+        public DbSet<UserResult> UserResults { get; set; }
 
     }
 }

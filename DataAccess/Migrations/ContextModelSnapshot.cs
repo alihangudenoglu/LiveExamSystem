@@ -114,6 +114,27 @@ namespace DataAccess.Migrations
                     b.ToTable("QuestionImages");
                 });
 
+            modelBuilder.Entity("Entities.Concrete.UserResult", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExamKod")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Result")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserResults");
+                });
+
             modelBuilder.Entity("Entities.Concrete.Answer", b =>
                 {
                     b.HasOne("Entities.Concrete.Question", "Question")
