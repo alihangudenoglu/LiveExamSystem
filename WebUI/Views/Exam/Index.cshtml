@@ -1,6 +1,162 @@
-﻿@model Entities.Concrete.Exam
+﻿@using Entities.DTOs;
+@model ExamDetailDto
 @{
     Layout = null;
 }
 
-<img src="~" alt="Alternate Text" />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Exam System</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <!-- Icon CSS -->
+    <script src="https://kit.fontawesome.com/7c4eba2dff.js"
+            crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+          crossorigin="anonymous" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 pl-4">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            @for (int i = 1; i <= Model.Questions.Count;i++)
+                            {
+                                <button type="button" onclick="myButton('Soru_@i')" class="btn btn-primary mr-1 mt-2">@i</button>
+                            }
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-danger mr-1 mt-2">Sınavı Bitir</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class='time-frame float-right mt-2'>
+                    <div id='tarih-bolumu'></div>
+                    <div id='saat-bolumu'></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container" id="con">
+
+        @for (int i = 0; i < Model.Questions.Count; i++)
+        {
+        <div class="card rounded mx-auto d-block mb-2" id="Soru_@(i+1)" style="width: auto;">
+            @if (Model.Questions[i].Image.ImagePath != null)
+            {
+                <img src="@Model.Questions[i].Image.ImagePath" class="card-img-top img-fluid m-auto d-block " alt="soru resmi" style="max-width: auto; max-height:25rem;">
+            }
+            <div class="card-body">
+                <h5 class="card-title">Soru @(i+1):</h5>
+                <p class="card-text">Soru:@Model.Questions[i].Title</p>
+            </div>
+            <div class="card-body">
+                <div class="input-group input-group-sm mb-3 w-75 m-auto mt-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">A )</span>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="radio">
+                        </div>
+                    </div>
+                    <textarea class="form-control" dropzone="1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required disabled>@Model.Questions[i].Options.OptionOne</textarea>
+                </div>
+                <div class="input-group input-group-sm mb-3 w-75 m-auto mt-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">A )</span>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="radio">
+                        </div>
+                    </div>
+                    <textarea class="form-control" dropzone="1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required disabled>@Model.Questions[i].Options.OptionTwo</textarea>
+                </div>
+                <div class="input-group input-group-sm mb-3 w-75 m-auto mt-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">A )</span>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="radio">
+                        </div>
+                    </div>
+                    <textarea class="form-control" dropzone="1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required disabled>@Model.Questions[i].Options.OptionThree</textarea>
+                </div>
+                <div class="input-group input-group-sm mb-3 w-75 m-auto mt-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">A )</span>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <input type="radio">
+                        </div>
+                    </div>
+                    <textarea class="form-control" dropzone="1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required disabled>@Model.Questions[i].Options.OptionFour</textarea>
+                </div>
+            </div>
+        </div>
+        }
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+    <script>
+        
+        var con = $('#con');
+        function myButton(p1) {
+            myhid()
+            document.getElementById(p1).classList.remove("d-none")
+            console.log(p1)
+        }
+
+        var myhid = function () {
+
+            for (var i = 1; i < con.children().length; i++) {
+                con.children(i).addClass("d-none");
+            }
+            
+        }
+        $(document).ready(function () {
+
+            myhid()
+            con.children().first().removeClass("d-none")         
+            
+
+        });
+        function tarihSaat() {
+
+            var date = new Date().toLocaleString();
+            const list = date.split(" ");
+            document.getElementById("tarih-bolumu").innerHTML = list[0];
+            document.getElementById("saat-bolumu").innerHTML = list[1];
+        }
+        setInterval(tarihSaat, 1000);
+    </script>
+</body>
+</html>

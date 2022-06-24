@@ -1,0 +1,31 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<div class="container">
+    <h1 class="text-center mb-5 mt-4">Sınavınız Başarıyla Kayıt olmuştur.</h1>
+
+    <div class="input-group mt-4 w-50 m-auto">
+        <span class="input-group-text">Sınav Kodu</span>
+        <input type="text" class="form-control text-center" aria-label="Recipient's username" aria-describedby="button-addon2" id="myInput" value="@ViewBag.result" disabled>
+        <button class="btn btn-outline-secondary" type="button" onclick="myFunction()">Copy text</button>
+    </div>
+
+</div>
+
+@section Scripts{ 
+
+    <script>
+        function myFunction() {
+            var copyText = document.getElementById("myInput");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(copyText.value);
+            alert("Copied the text: " + copyText.value);
+        }
+    </script>
+
+}

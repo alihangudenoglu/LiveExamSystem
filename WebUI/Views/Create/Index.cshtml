@@ -1,6 +1,4 @@
-﻿@{ 
-    int deneme=0;
-}
+﻿
 
 
 <div class="container-fluid text-center">
@@ -8,15 +6,16 @@
     <h1>Soru oluştur</h1>
     <button class="btn btn-outline-success" id="add-exam">+</button>
 
-    
 
-    <form method="post">
+
+
+    <form method="post" enctype="multipart/form-data" class="needs-validation">
         <div class="card mt-2 ">
             <div class="card-body w-75 m-auto ">
 
                 <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Başlangıç Tarihi</span>
-                    <input type="datetime-local" class="form-control" id="birthdaytime" name="StartDateTime" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    <input type="datetime-local" class="form-control" id="birthdaytime" name="StartDateTime" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                 </div>
 
             </div>
@@ -24,7 +23,7 @@
 
                 <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Başlangıç Tarihi</span>
-                    <input type="datetime-local" class="form-control" id="birthdaytime" name="EndDateTime" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    <input type="datetime-local" class="form-control" id="birthdaytime" name="EndDateTime" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                 </div>
 
             </div>
@@ -43,79 +42,81 @@
 
 </div>
 
-@section scripts{
+
+
+@section Scripts{
+
     <script>
-         $("#DbSave").click(function () {
+        function myFunction(p1, p2) {
 
-                /*$("#Questions[0].Options.OptionOne").val("aa");*/
-                //$("#" + newIndexName + "Options.OptionTwo").val($("input[name='" + newIndexName + "Options.OptionTwo" + "']").val());
-                //$("#" + newIndexName + "Options.OptionThree").val($("input[name='" + newIndexName + "Options.OptionThree" + "']").val());
-                //$("#" + newIndexName + "Options.OptionFour").val($("input[name='" + newIndexName + "Options.OptionFour" + "']").val());
-                var bb = $('#exams')
-             var indexx = bb.children().length - 1;
-                
-                var aa = 'Questions[' + indexx + '].';
-                @*@for (int i = 0; i < 4; i++)
-                {                    
-                  $("option[id='" + aa + "Options.OptionFour" + "']").val($("input[name='Questions[0].Options.OptionOne']").val());
+            document.getElementById(p1).value = document.getElementById(p2).value;
 
-                }*@
 
-             console.log(@deneme)
-                /*console.log($("input[name='" + newIndexName + "Options.OptionFour" + "']").val());*/
-                //console.log($("#" + newIndexName + "Options.OptionFour").val($("input[name='" + newIndexName + "Options.OptionFour" + "']").val()));
+        }
+        function myDelete(p1) {
+            document.getElementById(p1).innerHTML = ""
 
-            });
+
+        }
     </script>
     <script>
-
-
-
         $(function () {
-           
+
             $('#add-exam').click(function () {
                 var exams = $('#exams')
                 var newIndexName = 'Questions[' + exams.children().length + '].';
-                var newWrapper = $('<div class="card mt-5"></div >');
+                var newWrapper = $('<div class="card mt-5" id="card[' + (exams.children().length + 1) + ']" ></div >');
                 var inWrapper = $('<ul class="list-group list-group-flush"></ul>');
-                $('<div class="card-header">Soru: ' + (exams.children().length + 1) + '</div >').appendTo(newWrapper);
+                $(`<div class="card-header">Soru: ` + (exams.children().length + 1) +/*`<div class= "btn btn-outline-danger ml-4" onclick="myDelete('` + "card[" + (exams.children().length + 1) +"]"+`')"  id = "delete-exam" >-</div>*/ `</div >`).appendTo(newWrapper);
+
                 //soru textbox
                 $(`<div class="input-group input-group-sm mb-3 w-75 m-auto mt-3">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Soru:</span>
-                    <input type="text" name="`+ newIndexName+"Title" +`" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                   </div>`).appendTo('<li class="list-group-item"></li>').appendTo(inWrapper);
+                                <span class="input-group-text" id="inputGroup-sizing-sm">Soru:</span>
+                                <input type="text" name="`+ newIndexName + "Title" + `" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                               </div>`).appendTo('<li class="list-group-item"></li>').appendTo(inWrapper);
                 //şık textbox
                 $(`<div class="input-group input-group-sm mb-3 w-75 m-auto mt-3">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">A )</span>
-                    <input type="text" class="form-control" id="ali" name="`+ newIndexName + "Options.OptionOne" +`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                   </div>`).appendTo('<li class="list-group-item"></li>').appendTo(inWrapper);
+                                <span class="input-group-text" id="inputGroup-sizing-sm">A )</span>
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="radio" onclick="myFunction('` + newIndexName + "CorrectAnswer1" + `','` + newIndexName + "Options.OptionOne" + `')" name="` + newIndexName + "CorrectAnswer" + `" id="` + newIndexName + "CorrectAnswer1" + `" required>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" id="`+ newIndexName + "Options.OptionOne" + `" name="` + newIndexName + "Options.OptionOne" + `" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                               </div>`).appendTo('<li class="list-group-item"></li>').appendTo(inWrapper);
+                
                 $(`<div class="input-group input-group-sm mb-3 w-75 m-auto mt-3">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">B )</span>
-                    <input type="text" class="form-control" name="`+ newIndexName + "Options.OptionTwo" +`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                   </div>`).appendTo('<li class="list-group-item"></li>').appendTo(inWrapper);
+                                <span class="input-group-text" id="inputGroup-sizing-sm">B )</span>
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="radio" onclick="myFunction('` + newIndexName + "CorrectAnswer2" + `','` + newIndexName + "Options.OptionTwo" + `')" name="` + newIndexName + "CorrectAnswer" + `" id="` + newIndexName + "CorrectAnswer2" + `" required>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" id="`+ newIndexName + "Options.OptionTwo" + `" name="` + newIndexName + "Options.OptionTwo" + `" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                               </div>`).appendTo('<li class="list-group-item"></li>').appendTo(inWrapper);
                 $(`<div class="input-group input-group-sm mb-3 w-75 m-auto mt-3">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">C )</span>
-                    <input type="text" class="form-control" name="`+ newIndexName + "Options.OptionThree" +`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                   </div>`).appendTo('<li class="list-group-item"></li>').appendTo(inWrapper);
+                                <span class="input-group-text" id="inputGroup-sizing-sm">C )</span>
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="radio" onclick="myFunction('` + newIndexName + "CorrectAnswer3" + `','` + newIndexName + "Options.OptionThree" + `')" name="` + newIndexName + "CorrectAnswer" + `" id="` + newIndexName + "CorrectAnswer3" + `" required>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" id="`+ newIndexName + "Options.OptionThree" + `" name="` + newIndexName + "Options.OptionThree" + `" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                               </div>`).appendTo('<li class="list-group-item"></li>').appendTo(inWrapper);
                 $(`<div class="input-group input-group-sm mb-3 w-75 m-auto mt-3">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">D )</span>
-                    <input type="text" class="form-control" name="`+ newIndexName + "Options.OptionFour" +`" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                   </div>`).appendTo('<li class="list-group-item"></li>').appendTo(inWrapper);
+                                <span class="input-group-text" id="inputGroup-sizing-sm">D )</span>
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="radio" onclick="myFunction('` + newIndexName + "CorrectAnswer4" + `','` + newIndexName + "Options.OptionFour" + `')" name="` + newIndexName + "CorrectAnswer" + `" id="` + newIndexName + "CorrectAnswer4" + `" required>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" id="`+ newIndexName + "Options.OptionFour" + `" name="` + newIndexName + "Options.OptionFour" + `" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                               </div>`).appendTo('<li class="list-group-item"></li>').appendTo(inWrapper);
                 //cevap textbox
-                $(`<div class="input-group input-group-sm mb-3 w-75 m-auto mt-3">
-                        <span class="input-group-text" id="inputGroup-sizing-sm">Cevap</span>
-                        <select class="form-select" name="` + newIndexName + "CorrectAnswer" +`" aria-label="Default select example">
-
-                        <option id="`+ newIndexName + "Options.OptionOne" +`" value="">A</option>
-                        <option id="`+ newIndexName + "Options.OptionTwo" +`" value="">B</option>
-                        <option id="`+ newIndexName + "Options.OptionThree" +`" value="">C</option>
-                        <option id="`+ newIndexName + "Options.OptionFour" +`" value="">D</option>
-                        </select>
-                   </div>`).appendTo('<li class="list-group-item"></li>').appendTo(inWrapper);
 
                 $(`<div class="input-group input-group-sm mb-3 w-75 m-auto mt-3">
-                    <input type="file" class="form-control" name="`+ newIndexName + "ImageUrl" +`" id="inputGroupFile01">
-                   </div>`).appendTo('<li class="list-group-item"></li>').appendTo(inWrapper);
+                                <input type="file" class="form-control" name="formFile" id="inputGroupFile01" required>
+                               </div>`).appendTo('<li class="list-group-item"></li>').appendTo(inWrapper);
 
 
 

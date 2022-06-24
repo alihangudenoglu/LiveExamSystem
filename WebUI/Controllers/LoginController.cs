@@ -12,5 +12,12 @@ namespace WebUI.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult Index(string Kod)
+        {
+            ViewBag.Date = "23.06.2022 17:55";
+            ViewBag.Kod = Kod;
+            return View("WaitRoom");
+        }
     }
 }

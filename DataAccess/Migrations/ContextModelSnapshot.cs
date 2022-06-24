@@ -83,9 +83,6 @@ namespace DataAccess.Migrations
                     b.Property<int>("ExamId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -142,7 +139,7 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Entities.Concrete.QuestionImage", b =>
                 {
                     b.HasOne("Entities.Concrete.Question", "Question")
-                        .WithOne("QuestionImage")
+                        .WithOne("Image")
                         .HasForeignKey("Entities.Concrete.QuestionImage", "QuestionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -157,9 +154,9 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Entities.Concrete.Question", b =>
                 {
-                    b.Navigation("Options");
+                    b.Navigation("Image");
 
-                    b.Navigation("QuestionImage");
+                    b.Navigation("Options");
                 });
 #pragma warning restore 612, 618
         }

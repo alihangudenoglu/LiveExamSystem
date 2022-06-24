@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Business.Abstract;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,12 +10,17 @@ namespace WebUI.Controllers
 {
     public class ExamController : Controller
     {
-        public IActionResult Index()
+        IExamService _examService;
+
+        public ExamController(IExamService examService)
         {
-            Exam sınav = new Exam {
-            Id=1,Questions=new List<Question>{ new Question {Id=1,ExamId=1,ImageUrl="" } }
-            };
-            return View();
+            _examService = examService;
+        }
+
+        public IActionResult Index(string Kod)
+        {
+            var result= _examService.GetByExamDetails(Kod);
+            return View(result.Data);
         }
     }
 }

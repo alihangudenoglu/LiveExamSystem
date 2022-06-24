@@ -10,7 +10,7 @@ namespace DataAccess.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {            
-            optionsBuilder.UseSqlServer(@"server=DESKTOP-TFH3P0O;database=ExamDeneme; integrated security=true;");
+            optionsBuilder.UseSqlServer(@"server=DESKTOP-TFH3P0O;database=ExamDb; integrated security=true;");
         }
 
         public DbSet<Exam> Exams { get; set; }

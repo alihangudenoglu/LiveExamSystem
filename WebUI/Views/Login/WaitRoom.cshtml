@@ -1,0 +1,31 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form action="Exam" method="post">
+    <div class="container text-center mt-3 mb-3">
+        <h1>Sınav Bekleme Odası</h1>
+        <h5>Sınav Başlangıç Tarihi @ViewBag.Date</h5>
+        <button type="submit" class="btn btn-outline-secondary mt-3 invisible" name="Kod" value="@ViewBag.Kod" id="Login">Giriş Yap</button>
+    </div>
+</form>
+
+@section Scripts{
+
+    <script>
+        function Timer() {
+            var tarih = document.getElementById("tarih-bolumu").innerHTML;            
+            var saat = document.getElementById("saat-bolumu").innerHTML;
+            if ("00:40:00" < saat && saat < "23:50:00" ) {
+                document.getElementById("Login").classList.remove("invisible");
+            }
+            else {
+                document.getElementById("Login").classList.add("invisible");
+            }
+        }
+        setInterval(Timer, 1000);
+    </script>
+
+ }
