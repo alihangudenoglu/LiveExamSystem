@@ -13,6 +13,7 @@ namespace Entities.Concrete
         public string OptionTwo { get; set; }
         public string OptionThree { get; set; }
         public string OptionFour { get; set; }
+        public string OptionFive { get; set; }
 
 
         public Question Question { get; set; }

@@ -35,7 +35,7 @@ namespace DataAccess.Concrete.EntityFramework
                                               {
                                                   Title = i.Title,
                                                   Image=new QuestionImage { ImagePath=i.Image.ImagePath},
-                                                  Options=new Answer { OptionOne = i.Options.OptionOne, OptionTwo = i.Options.OptionTwo, OptionThree = i.Options.OptionThree, OptionFour = i.Options.OptionFour, },
+                                                  Options=new Answer { OptionOne = i.Options.OptionOne, OptionTwo = i.Options.OptionTwo, OptionThree = i.Options.OptionThree, OptionFour = i.Options.OptionFour,OptionFive = i.Options.OptionFive},
                                                   CorrectAnswer=i.CorrectAnswer
                                                   //Image = from img in context.QuestionImages where img.QuestionId == i.Id select new QuestionImage { ImagePath = img.ImagePath },
 
